@@ -83,3 +83,13 @@ $(call inherit-product, device/oneplus/sm8650-common/common.mk)
 
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/oneplus/caihong/caihong-vendor.mk)
+
+# Ship libheif.so: AOSP 17 removed frameworks/av/media/libheif, but OnePlus WFD
+# prebuilts (libwfdcommonutils) still require it at runtime. Source restored locally.
+PRODUCT_PACKAGES += \
+    libheif
+
+# Runtime V4 AIDL lib required by the prebuilt libwfdservice.so (DT_NEEDED);
+# soong's build graph uses V5 only (see vendor/oneplus/sm8650-common/Android.bp).
+PRODUCT_PACKAGES += \
+    android.media.audio.common.types-V4-cpp
