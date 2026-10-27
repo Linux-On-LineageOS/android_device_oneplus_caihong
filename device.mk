@@ -93,3 +93,5 @@ PRODUCT_PACKAGES += \
 # soong's build graph uses V5 only (see vendor/oneplus/sm8650-common/Android.bp).
 PRODUCT_PACKAGES += \
     android.media.audio.common.types-V4-cpp
+
+$(call inherit-product, vendor/lindroid/lindroid.mk)
